@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace APISimber.Repository
 {
+    /// <summary>
+    /// Хранение данных в памяти системы
+    /// </summary>
     public class InMemBooksRepository : IBooksRepository
     {
         private readonly IInHumanRep humanRep;

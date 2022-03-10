@@ -8,6 +8,9 @@ namespace APISimber.Dtos
 {
     public class CreatedHumanDto
     {
+        /// <summary>
+        /// 1.	Добавьте валидации в ваши сущности: все обязательные поля должны быть NotNull. 
+        /// </summary>
         [Required]
         public string Name { get; set; }
         [Required]

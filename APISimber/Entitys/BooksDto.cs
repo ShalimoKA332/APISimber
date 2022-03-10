@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace APISimber.Entitys
-{
+{/// <summary>
+/// 2.	Создать классы-репрезентирующие (постфикс Dto)
+/// </summary>
     public class BooksDto : HumanDto
     {
         HumanDto human = new HumanDto();

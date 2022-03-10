@@ -44,10 +44,12 @@ namespace APISimber.Controllers
             }
             //3.1.1.Список всех людей.
             return humans;
-
-
-
         }
+        /// <summary>
+        /// 3.2.	Реализовать метод POST добавляющий нового человека.
+        /// </summary>
+        /// <param name="created"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<HumanDto> CreateHuman(CreatedHumanDto created)
         {

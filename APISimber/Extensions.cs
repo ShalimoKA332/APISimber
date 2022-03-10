@@ -8,6 +8,7 @@ namespace APISimber
 {
     public static class Extensions
     {
+
         public static HumanDto AsDto(this HumanDto human)
         {
             return new HumanDto()
@@ -28,7 +29,7 @@ namespace APISimber
                 Book_id = book.Book_id,
                 Title = book.Title,
                 Genre = book.Genre,
-                AuthorBook=book.Surname,
+                AuthorBook = book.Surname,
             };
         }
     }

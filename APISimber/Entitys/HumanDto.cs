@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 namespace APISimber
 {
     public class HumanDto
-    {
+    {/// <summary>
+     /// 2.	Создать классы-репрезентирующие (постфикс Dto)
+     ///1.	Добавьте валидации в ваши сущности: все обязательные поля должны быть NotNull. 
+     /// </summary>
         public Guid Human_id { get; set; }
         [Required]
         public  string Name { get; set; }
