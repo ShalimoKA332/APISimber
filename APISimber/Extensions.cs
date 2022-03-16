@@ -29,7 +29,6 @@ namespace APISimber
                 Book_id = book.Book_id,
                 Title = book.Title,
                 Genre = book.Genre,
-                AuthorBook = book.Surname,
             };
         }
     }

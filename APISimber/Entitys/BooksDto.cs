@@ -8,7 +8,7 @@ namespace APISimber.Entitys
 {/// <summary>
 /// 2.	Создать классы-репрезентирующие (постфикс Dto)
 /// </summary>
-    public class BooksDto : HumanDto
+    public class BooksDto: HumanDto
     {
         HumanDto human = new HumanDto();
         public Guid Book_id { get; set; }
@@ -16,13 +16,13 @@ namespace APISimber.Entitys
         public string Title { get; set; }
         [Required]
         public string Genre { get; set; }
-        public string AuthorBook
+        public virtual HumanDto AuthorBook
         {
             get
             {
                 if (human.Author == true)
                 {
-                    return AuthorBook;
+                    return human;
                 }
                 return null;
             }

@@ -26,8 +26,8 @@ namespace APISimber
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IBooksRepository, InMemBooksRepository>();
-            services.AddSingleton<IInHumanRep, HumanRep>();
+            services.AddSingleton<IBooksRepository, BooksRepository>();
+            services.AddSingleton<IHumanRepository, HumanRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

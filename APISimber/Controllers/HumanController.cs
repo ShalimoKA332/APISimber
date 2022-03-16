@@ -15,8 +15,8 @@ namespace APISimber.Controllers
     [Route("humans")]
     public class HumanController : ControllerBase
     {
-        private readonly IInHumanRep humanRep;
-        public HumanController(IInHumanRep rep)
+        private readonly IHumanRepository humanRep;
+        public HumanController(IHumanRepository rep)
         {
             this.humanRep = rep;
         }
@@ -65,8 +65,17 @@ namespace APISimber.Controllers
             humanRep.CreateHuman(human);
             return CreatedAtAction(nameof(GetHumans), new { id = human.Human_id }, human.AsDto());
         }
-
-
+        [HttpDelete]
+        public ActionResult Delete(Guid id)
+        {
+            var find = humanRep.GetHuman(id);
+            if (find is null) 
+            {
+                return NotFound();
+            }
+            humanRep.RemoveHuman(id);
+            return NoContent();
+        }
     }
 
 }

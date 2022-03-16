@@ -22,6 +22,5 @@ namespace APISimber
         [Required]
         public string Dateofbirth { get; set; }
         public bool Author { get; set; } = false;
-      
     }
 }

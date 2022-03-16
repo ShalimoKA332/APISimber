@@ -30,7 +30,7 @@ namespace APISimber.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public IEnumerable<BooksDto> GetBooks(string Author = null, string Genre = null, string Title = null)
+        public IEnumerable<BooksDto> GetBooks(string Authorid = null, string Genre = null, string Title = null)
         {
             var books = booksrep.GetBook();
             if (Title != null)
@@ -43,16 +43,38 @@ namespace APISimber.Controllers
                 var findbook = books.Where(x => x.Genre.Contains(Genre));
                 return findbook;
             }
-            else
+            else if (Authorid != null)
             {
-                return books;
+                var authorbook = books.Where(x =>
+                {
+                    return x.Human_id.ToString() == Authorid;
+                });
+                return authorbook;
             }
-            //else
-            //{
-            //    //та же ситуация,описанная в InMemBooksRepository
-            //    var findbook = books.Where(x=>x.Author.GetHuman())
-            //    return findbook;
-            //}
+
+            return books;
+
+        }
+        [HttpGet("sort")]
+        public IEnumerable<BooksDto> GetSort(string Author, string Genre = null, string Title = null)
+        {
+            var books = booksrep.GetBook();
+            if (Author != null)
+            {
+                var Authorsort = books.OrderBy(x => x.Author);
+                return Authorsort;
+            }
+            else if (Genre != null)
+            {
+                var Genresort = books.OrderBy(x => x.Genre);
+                return Genresort;
+            }
+            else if (Title != null)
+            {
+                var Titlesort = books.OrderBy(x => x.Title);
+                return Titlesort;
+            }
+            return books;
         }
         /// <summary>
         /// 4.2.	Реализовать метод POST добавляющий новую книгу.
@@ -75,6 +97,16 @@ namespace APISimber.Controllers
             };
             booksrep.CreateHBook(books);
             return CreatedAtAction(nameof(GetBooks), new { id = books.Human_id }, books.AsDto());
+        }
+        [HttpDelete]
+        public ActionResult<HumanDto> RemoveBooks(Guid id)
+        {
+            booksrep.RemoveBook(id);
+            if (booksrep == null)
+            {
+                return NoContent();
+            }
+            return Ok();
         }
     }
 }
