@@ -28,6 +28,7 @@ namespace APISimber
         {
             services.AddSingleton<IBooksRepository, BooksRepository>();
             services.AddSingleton<IHumanRepository, HumanRepository>();
+            services.AddSingleton<IReaderTicketRepository, ReaderTicketRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using APISimber.Entitys;
+using APISimber.Repository;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +8,27 @@ using System.Threading.Tasks;
 
 namespace APISimber.Controllers
 {
-    public class ReaderTicketController : Controller
+    [ApiController]
+    [Route("ReaderTicket")]
+    public class ReaderTicketController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IReaderTicketRepository repository;
+
+        public ReaderTicketController(IReaderTicketRepository repository)
         {
-            return View();
+            this.repository = repository;
+        }
+        [HttpPost]
+        public ActionResult<LibraryTicket> CreateLibraryTicket(LibraryTicket ticket)
+        {
+            repository.CreateLibrariTicket(ticket);
+            return Ok();
+        }
+        [HttpGet]
+        public ActionResult<LibraryTicket> GetLibraryTicket()
+        {
+            repository.GetReaderTocket();
+            return Ok();
         }
     }
 }
